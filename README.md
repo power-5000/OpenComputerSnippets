@@ -7,6 +7,17 @@ This is a collection of snippets that makes it possible to easily write  OpenCom
 - Snippets for each API in OpenComputer
 
 ![example1](Images/example1.png)
+## included
+
+- Api reference link
+- colors
+- component
+- computer
+- event
+- uuid
+- sides
+- redstone
+- AE integration
 
 ## Planned
 

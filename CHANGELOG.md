@@ -15,7 +15,7 @@ All notable changes to the "opencomputersnippets" extension will be documented i
 - shell
 - signals
 
-## 0.3.0 - 2019/05/13
+## 0.3.0 - 2019-05-13
 
 - initial release
   - added

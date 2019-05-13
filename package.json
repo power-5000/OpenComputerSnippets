@@ -2,16 +2,19 @@
     "name": "opencomputersnippets",
     "displayName": "OpenComputerSnippets",
 	"description": "Snippets for OpenComputer",
-	"icon": "./Images/icon.png",
+	"icon": "Images/icon.png",
 	"author": {
 		"name": "Power5000"
 	},
+	"publisher": "Power5000",
 
 	"version": "0.3.0",
 	"repository": {
-		"url": "TODO:"
+		"url": "https://github.com/power-5000/OpenComputerSnippets"
 	},
-	"bugs": {},
+	"bugs": {
+		"url": "https://github.com/power-5000/OpenComputerSnippets/issues"
+	},
 
 
 
