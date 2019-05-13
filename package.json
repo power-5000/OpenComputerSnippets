@@ -1,0 +1,33 @@
+{
+    "name": "opencomputersnippets",
+    "displayName": "OpenComputerSnippets",
+	"description": "Snippets for OpenComputer",
+	"icon": "./Images/icon.png",
+	"author": {
+		"name": "Power5000"
+	},
+
+	"version": "0.3.0",
+	"repository": {
+		"url": "TODO:"
+	},
+	"bugs": {},
+
+
+
+
+    "engines": {
+        "vscode": "^1.33.1"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "lua",
+                "path": "./snippets/snippets.json"
+            }
+		]
+    }
+}

@@ -1,0 +1,7 @@
+#VSCode
+/.vscodeignore
+
+
+#Debugging
+/test.lua
+/.VSCode

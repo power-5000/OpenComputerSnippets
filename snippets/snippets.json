@@ -1,0 +1,1028 @@
+{
+	/* 	snippet name | scope | prefix | body | description
+		 The prefix is what is used to trigger the snippet 
+		 the body will be expanded and inserted
+		 Possible variables are: $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	*/
+	
+	/*  	"Snippet name": {
+			"scope": "lua",
+			"prefix": "shortcut",
+			"body": [ the expansion	],
+			"description": "test snippet"
+		}
+	*/
+	
+	
+	
+	
+	//OC APIs--------------------------------- https://ocdoc.cil.li/api
+		"OC API": {
+			"scope": "lua",
+			"prefix": "OpenComputer.API",
+			"body": [
+				"--https://ocdoc.cil.li/api ctrl+click to follow"
+			],
+			"description": "creates link to the OC APIS"
+		},
+		"OC API2": {
+			"scope": "lua",
+			"prefix": "OpenComputer.API.Component",
+			"body": [
+				"--https://ocdoc.cil.li/component ctrl+click to follow"
+			],
+			"description": "creates link to the OC component APIS"
+		},
+	
+	
+	
+		// FIXME: buffer
+	
+	
+	
+		//colors
+			"colors.white": {
+				"scope": "lua",
+				"prefix": "colors.white",
+				"body": [
+					"colors.white"
+				],
+				"description": "reference white:0"
+			},
+	
+			"colors.orange": {
+				"scope": "lua",
+				"prefix": "colors.orange",
+				"body": [
+					"colors.orange"
+				],
+				"description": "reference orange:1"
+			},
+	
+			"colors.magenta": {
+				"scope": "lua",
+				"prefix": "colors.magenta",
+				"body": [
+					"colors.magenta"
+				],
+				"description": "reference magenta:2"
+			},
+	
+			"colors.lightblue": {
+				"scope": "lua",
+				"prefix": "colors.lightblue",
+				"body": [
+					"colors.lightblue"
+				],
+				"description": "reference light blue:3"
+			},
+	
+			"colors.yellow": {
+				"scope": "lua",
+				"prefix": "colors.yellow",
+				"body": [
+					"colors.yellow"
+				],
+				"description": "reference yellow:4"
+			},
+	
+			"colors.lime": {
+				"scope": "lua",
+				"prefix": "colors.lime",
+				"body": [
+					"colors.lime"
+				],
+				"description": "reference lime:5"
+			},
+	
+			"colors.pink": {
+				"scope": "lua",
+				"prefix": "colors.pink",
+				"body": [
+					"colors.pink"
+				],
+				"description": "reference pink:6"
+			},
+	
+			"colors.gray": {
+				"scope": "lua",
+				"prefix": "colors.gray",
+				"body": [
+					"colors.gray"
+				],
+				"description": "reference gray:7"
+			},
+	
+			"colors.silver": {
+				"scope": "lua",
+				"prefix": "colors.silver",
+				"body": [
+					"colors.silver"
+				],
+				"description": "reference silver:8"
+			},
+	
+			"colors.cyan": {
+				"scope": "lua",
+				"prefix": "colors.cyan",
+				"body": [
+					"colors.cyan"
+				],
+				"description": "reference cyan:9"
+			},
+	
+			"colors.purple": {
+				"scope": "lua",
+				"prefix": "colors.purple",
+				"body": [
+					"colors.purple"
+				],
+				"description": "reference purple:10"
+			},
+	
+			"colors.blue": {
+				"scope": "lua",
+				"prefix": "colors.blue",
+				"body": [
+					"colors.blue"
+				],
+				"description": "reference blue:11"
+			},
+	
+			"colors.brown": {
+				"scope": "lua",
+				"prefix": "colors.brown",
+				"body": [
+					"colors.brown"
+				],
+				"description": "reference brown:12"
+			},
+	
+			"colors.green": {
+				"scope": "lua",
+				"prefix": "colors.green",
+				"body": [
+					"colors.green"
+				],
+				"description": "reference green:13"
+			},
+	
+			"colors.red": {
+				"scope": "lua",
+				"prefix": "colors.red",
+				"body": [
+					"colors.red"
+				],
+				"description": "reference red:14"
+			},
+	
+			"colors.black": {
+				"scope": "lua",
+				"prefix": "colors.black",
+				"body": [
+					"colors.black"
+				],
+				"description": "reference black:15"
+			},
+	
+	
+	
+		// component 
+			"component.doc()": {
+				"scope": "lua",
+				"prefix": "component.doc()",
+				"body": [
+					"component.doc(${1:address, method})$0"
+				],
+				"description": "(address:string, method:string)\n:string \nReturns the documentation string for the method with the specified name of the component with the specified address, if any."
+			},
+	
+			"component.invoke()": {
+				"scope": "lua",
+				"prefix": "component.invoke()",
+				"body": [
+					"component.invoke(${1:address, method})$0"
+				],
+				"description": "address:string, method[]:string)\n:...\nCalls the method on the component with the specified address, passing the remaining arguments as arguments to that method. Returns the result of the method call."
+			},
+	
+			"component.list()": {
+				"scope": "lua",
+				"prefix": "component.list()",
+				"body": [
+					"component.list(${1:[filter[]})$0"
+				],
+				"description": "(filter:string[\"\",exact bool])\n:function \nReturns a table with all components currently attached to the computer, with address as a key and component type as a value."
+			},
+	
+			"component.methods()": {
+				"scope": "lua",
+				"prefix": "component.methods()",
+				"body": [
+					"component.methods(${1:address})$0"
+				],
+				"description": "(address:string)\n:table\n Returns a table with the names of all methods provided by the component with the specified address. The names are the keys in the table, the values indicate whether the method is called directly or not."
+			},
+	
+			"component.proxy()": {
+				"scope": "lua",
+				"prefix": "component.proxy()",
+				"body": [
+					"component.proxy(${1:address})$0"
+				],
+				"description": "(address:string)\n:table\nGets a 'proxy' object for a component that provides all methods the component provides as fields, so they can be called more directly."
+			},
+	
+			"component.type()": {
+				"scope": "lua",
+				"prefix": "component.type()",
+				"body": [
+					"component.type(${1:address})$0"
+				],
+				"description": "(address:string)\n:string\nGet the component type of the component with the specified address."
+			},
+	
+			"component.slot()": {
+				"scope": "lua",
+				"prefix": "component.slot()",
+				"body": [
+					"component.slot(${1:address})"
+				],
+				"description": "(address:string)\n:string\nUndocumented."
+			},
+	
+			"component.fields()": {
+				"scope": "lua",
+				"prefix": "component.fields()",
+				"body": [
+					"component.fields(${1:address})$0"
+				],
+				"description": "(address:string)\n:string\nybdocumented."
+			},
+	
+			"component.get()": {
+				"scope": "lua",
+				"prefix": "component.get()",
+				"body": [
+					"component.get(${1:address})$0"
+				],
+				"description": "(address:string[, componentType:string])\n:string | (nil, error:string)\nTries to resolve an abbreviated address to a full address. Returns the full address on success, or nil and an error message otherwise. Optionally filters by component type."
+			},
+	
+			"component.isAvailable()": {
+				"scope": "lua",
+				"prefix": "component.isAvailable()",
+				"body": [
+					"component.isAvailable(${1:componentType})$0"
+				],
+				"description": "(componentType:string)\n:boolean\nChecks if there is a primary component of the specified component type."
+			},
+	
+			"component.getPrimary()": {
+				"scope": "lua",
+				"prefix": "component.getPrimary()",
+				"body": [
+					"component.getPrimary(${1:componentType})$0"
+				],
+				"description": "(componentType:string)\n:table\nGets the proxy for the primary component of the specified type. Throws an error if there is no primary component of the specified type."
+			},
+	
+			"component.setPrimary()": {
+				"scope": "lua",
+				"prefix": "component.setPrimary()",
+				"body": [
+					"component.setPrimary(${1:componentType},${2:address})$0"
+				],
+				"description": "(componentType:string, address:string)\n\nSets a new primary component for the specified component type. The address may be abbreviated, but must be valid if it is not nil. Triggers the component_unavailable and component_available signals if set to nil or a new value."
+			},
+	
+	
+	
+		// computer
+			"computer.address()": {
+				"scope": "lua",
+				"prefix": "computer.address()",
+				"body": [
+					"computer.address()"
+				],
+				"description": ":string\nThe component address of this computer."
+			},
+	
+			"computer.tmpAddress()": {
+				"scope": "lua",
+				"prefix": "computer.tmpAddress()",
+				"body": [
+					"computer.tmpAddress()"
+				],
+				"description": ":string\nThe component address of the computer's temporary file system (if any), used for mounting it on startup."
+			},
+	
+			"computer.freeMemory()": {
+				"scope": "lua",
+				"prefix": "computer.freeMemory()",
+				"body": [
+					"computer.freeMemory()"
+				],
+				"description": ":number\nThe amount of memory currently unused, in bytes. If this gets close to zero your computer will probably soon crash with an out of memory error."
+			},
+	
+			"computer.totalMemory()": {
+				"scope": "lua",
+				"prefix": "computer.totalMemory()",
+				"body": [
+					"computer.totalMemory()"
+				],
+				"description": ":number\nThe total amount of memory installed in this computer, in bytes."
+			},
+	
+			"computer.energy()": {
+				"scope": "lua",
+				"prefix": "computer.energy()",
+				"body": [
+					"computer.energy()"
+				],
+				"description": ":number\nThe amount of energy currently available in the network the computer is in. For a robot this is the robot's own energy/fuel level."
+			},
+	
+			"computer.maxEnergy()": {
+				"scope": "lua",
+				"prefix": "computer.maxEnergy()",
+				"body": [
+					"computer.maxEnergy()"
+				],
+				"description": ":number\nThe maximum amount of energy that can be stored in the network the computer is in. For a robot this is the size of the robot's internal buffer."
+			},
+	
+			"computer.uptime()": {
+				"scope": "lua",
+				"prefix": "computer.uptime()",
+				"body": [
+					"computer.uptime()"
+				],
+				"description": ":number\nThe time in real world seconds this computer has been running, measured based on the world time that passed since it was started - meaning this will not increase while the game is paused."
+			},
+	
+			"computer.shutdown()": {
+				"scope": "lua",
+				"prefix": "computer.shutdown()",
+				"body": [
+					"computer.shutdown(${1|true,false|})"
+				],
+				"description": "([reboot:boolean])\n\nShuts down the computer. reboots the computer, if reboot is true."
+			},
+	
+			"comnputer.getBootAddress()": {
+				"scope": "lua",
+				"prefix": "comnputer.getBootAddress()",
+				"body": [
+					"comnputer.getBootAddress()"
+				],
+				"description": ":string\nGet the address of the filesystem component from which to try to boot first."
+			},
+	
+			"computer.setBootAddress()": {
+				"scope": "lua",
+				"prefix": "computer.setBootAddress()",
+				"body": [
+					"computer.setBootAddress(${1:address})$0"
+				],
+				"description": "(address:string)\n\nSet the address of the filesystem component from which to try to boot first. Call with nil/no arguments to clear"
+			},
+	
+			"computer.runlevel()": {
+				"scope": "lua",
+				"prefix": "computer.runlevel()",
+				"body": [
+					"computer.runlevel()"
+				],
+				"description": "string|number\n Returns the current runlevel the computer is in. Current Runlevels in OpenOS are:\nSingle-User mode, no components or filesystems initialized yet\nSingle-User mode, filesystems and components initialized - OpenOS finished booting"
+			},
+	
+			"computer.users()": {
+				"scope": "lua",
+				"prefix": "computer.users()",
+				"body": [
+					"computer.users()"
+				],
+				"description": ":string\n A list of all users registered on this computer, as a tuple. To iterate the result as a list, use table.pack on it, first."
+			},
+	
+			"computer.addUser()": {
+				"scope": "lua",
+				"prefix": "computer.addUser()",
+				"body": [
+					"computer.addUser(${1:name})$0"
+				],
+				"description": "(name:string)\n:boolean|nil, string\nRegisters a new user with this computer. Returns true if the user was successfully added. Returns nil and an error message otherwise. The user must be currently in the game. The user will gain full access rights on the computer."
+			},
+	
+			"computer.removeUser()": {
+				"scope": "lua",
+				"prefix": "computer.removeUser()",
+				"body": [
+					"computer.removeUser(${1:name})$0"
+				],
+				"description": "(name:string)\n:boolean\nUnregisters a user from this computer. Returns true if the user was removed, false if they weren't registered in the first place."
+			},
+	
+			"computer.pushSignal()": {
+				"scope": "lua",
+				"prefix": "computer.pushSignal()",
+				"body": [
+					"computer.pushSignal(${1:name})$0"
+				],
+				"description": "(name:string[, ...])\n\nPushes a new signal into the queue. Signals are processed in a FIFO order. The signal has to at least have a name. Arguments to pass along with it are optional."
+			},
+	
+			"computer.pullSignal()": {
+				"scope": "lua",
+				"prefix": "computer.pullSignal()",
+				"body": [
+					"computer.pullSignal(${1:{timeout})$0"
+				],
+				"description": "([timeout:number])\n:name, ...\n"
+			},
+	
+			"computer.beep()": {
+				"scope": "lua",
+				"prefix": "computer.beep()",
+				"body": [
+					"computer.beep(${1:frequency)"
+				],
+				"description": "([frequency:string|number[,duration:number])\noutput beeps\nCauses the computer to produce a beep sound at frequency Hz for duration seconds. This method is overloaded taking a single string parameter as a pattern of dots . and dashes - for short and long beeps respectively."
+			},
+	
+	
+	
+		//event
+			"event.listen()": {
+				"scope": "lua",
+				"prefix": "event.listen()",
+				"body": [
+					"event.listen(${1:event}, ${2:callback})$0"
+				],
+				"description": "(event:string, callback:function)\n:boolean\nRegister a new event listener that should be called for events with the specified name.\nevent-name of the signal to listen to.\ncallback-the function to call if this signal is received. The function will receive the event name it was registered for as first parameter, then all remaining parameters as defined by the signal that caused the event. \n Returns: number, the event id which can be canceled via event.cancel, if the event was successfully registered, false if this function was already registered for this event type."
+			},
+	
+			"event.ignore()": {
+				"scope": "lua",
+				"prefix": "event.ignore()",
+				"body": [
+					"event.ignore(${1:event}, ${2:callback})$0"
+				],
+				"description": "(event:string, callback:function)\n:boolean\nUnregister a previously registered event listener.\nevent-name of the signal to unregister.\ncallback-the function that was used to register for this event.\nReturns: true if the event was successfully unregistered, false if this function was not registered for this event type."
+			},
+	
+			"event.timer()": {
+				"scope": "lua",
+				"prefix": "event.timer()",
+				"body": [
+					"event.timer(${1:interval}, ${2:callback})$0"
+				],
+				"description": "(interval:number, callback:function[, times:number])\n:number\nStarts a new timer that will be called after the time specified in interval.\ninterval-time in seconds between each invocation of the callback function. Can be a fraction like 0.05.\ncallback-the function to call.\ntimes-how many times the function will be called. If omitted the function will be called once. Pass math.huge for infinite repeat.\n Returns: a timer ID that can be used to cancel the timer at any time.\nNote: the timer resolution can vary. If the computer is idle and enters sleep mode, it will only be woken in a game tick, so the time the callback is called may be up to 0.05 seconds off."
+			},
+	
+			"event.cancel()": {
+				"scope": "lua",
+				"prefix": "event.cancel()",
+				"body": [
+					"event.cancel(${1:timerId})$0"
+				],
+				"description": "(timerId:number):boolean\nCancels a timer previously created with event.timer.\ntimerId-a timer ID as returned by event.timer.\nReturns: true if the timer was stopped, false if there was no timer with the specified ID."
+			},
+	
+			"event.pull()": {
+				"scope": "lua",
+				"prefix": "event.pull()",
+				"body": [
+					"event.pull()"
+				],
+				"description": "([timeout:number], [name:string], ...)\n:string, ...\nPulls and returns the next available event from the queue, or waits until one becomes available.\ntimeout-if passed the function will wait for a new event for this many seconds at maximum then returns nil if no event was queued during that time.\nname-an event pattern that will act as a filter. If given then only events that match this pattern will be returned. Can be nil in which case the event names will not be filtered. See string.match on how to use patterns.\n… - any number of parameters in the same order as defined by the signal that is expected. Those arguments will act as filters for the additional arguments returned by the signal. Direct equality is used to determine if the argument is equal to the given filter. Can be nil in which case this particular argument will not be filtered.\nFilter example:\nThe touch signal has the signature screenX:number, screenY:number, playerName:string\nTo only pull clicks by player “Steve” you'd do:event.pull(\"touch\", nil, nil, \"Steve\")"
+			},
+	
+			"event.pullFiltered()": {
+				"scope": "lua",
+				"prefix": "event.pullFiltered()",
+				"body": [
+					"event.pullFiltered(${1:timeout}, ${2:filter})$0"
+				],
+				"description": "([timeout:number], [filter:function])\n:string, ... (Since 1.5.9)\nPulls and returns the next available event from the queue, or waits until one becomes available but allows filtering by specifying filter function.\ntimeout-if passed the function will wait for a new event for this many seconds at maximum then returns nil if no event was queued during that time.\nfilter-if passed the function will use it as a filtering function of events. Allows for advanced filtering."
+			},
+	
+			"event.pullMultiple()": {
+				"scope": "lua",
+				"prefix": "event.pullMultiple()",
+				"body": [
+					"event.pullMultiple(${1:name})$0"
+				],
+				"description": "(...)\n:...(Since 1.5.9)\nAs its arguments pullMutliple accepts multiple event names to be pulled, allowing basic filtering of multiple events at once."
+			},
+	
+			"event.onError()": {
+				"scope": "lua",
+				"prefix": "event.onError()",
+				"body": [
+					"event.onError(${1:message})$0"
+				],
+				"description": "(message: any)\n\nGlobal event callback error handler. If an event listener throws an error, we handle it in this function to avoid it bubbling into unrelated code (that only triggered the execution by calling event.pull). Per default, this logs errors into a file on the temporary file system.\nYou can replace this function with your own if you want to handle event errors in a different way."
+			},
+	
+			"event.push()": {
+				"scope": "lua",
+				"prefix": "event.push()",
+				"body": [
+					"event.push(${1:name})$0"
+				],
+				"description": "(name:string[, ...])\n\nThis is only an alias to computer.pushSignal. This does not modify the arguments in any way. It seemed logical to add the alias to the event library because there is also an event.pull for signals."
+			},
+	
+	
+	
+		// UUID 
+			"uuid.next()": {
+				"scope": "lua",
+				"prefix": "uuid.next()",
+				"body": [
+					"uuid.next()"
+				],
+				"description": ":string\n Returns 128 bit random identifiers, represented as a hex value in a string grouped by 8, 4, 4, 4, and 12 hex characters, separated by dashes."
+		},
+	
+	
+	
+		// FIXME: filesystem
+		// FIXME: internet
+		// FIXME: keyboard
+		// TODO: note
+		// FIXME: process
+		// TODO: rc
+		// TODO: robot
+		// TODO: serialization
+		// FIXME: shell
+	
+	
+	
+		// sides
+			"sides.bottom": {
+				"scope": "lua",
+				"prefix": "sides.bottom",
+				"body": [
+					"sides.bottom"
+				],
+				"description": "references the bottom"
+			},
+	
+			"sides.top": {
+				"scope": "lua",
+				"prefix": "sides.top",
+				"body": [
+					"sides.top"
+				],
+				"description": "references the top"
+			},
+	
+			"sides.back": {
+				"scope": "lua",
+				"prefix": "sides.back",
+				"body": [
+					"sides.back"
+				],
+				"description": "references the back"
+			},
+	
+			"sides.front": {
+				"scope": "lua",
+				"prefix": "sides.front",
+				"body": [
+					"sides.front"
+				],
+				"description": "reference the front"
+			},
+	
+			"sides.right": {
+				"scope": "lua",
+				"prefix": "sides.right",
+				"body": [
+					"sides.right"
+				],
+				"description": "reference the right"
+			},
+	
+			"sides.left": {
+				"scope": "lua",
+				"prefix": "sides.left",
+				"body": [
+					"sides.left"
+				],
+				"description": "reference the left"
+			},
+	
+	
+	
+		// TODO: term
+		// TODO: text
+		// TODO: thread
+		// TODO: transforms
+		// TODO: unicode
+		// FIXME: signals
+		// TODO: component apis-------------------------- https://ocdoc.cil.li/component
+		// TODO: 3D Printer
+		// TODO: Abstract bus
+		// TODO: access point
+		// TODO: chunkloader
+		// TODO: computer
+		// TODO: crafting
+		// TODO: data card
+		// TODO: database
+		// TODO: debug
+		// TODO: drone
+		// TODO: drive
+		// TODO: eeprom
+		// TODO: experience
+		// TODO: filesystem
+		// TODO: generator
+		// TODO: geolyzer
+		// TODO: GPU
+		// TODO: hologram
+		// TODO: internet
+		// TODO: inventory
+		// TODO: controller
+		// TODO: leash
+		// TODO: modem
+		// TODO: motion sensor
+		// TODO: navigation
+		// TODO: net splliter
+		// TODO: Piston
+	
+	
+	
+		//redstone
+			"redstone.getInput()": {
+				"scope": "lua",
+				"prefix": "redstone.getInput()",
+				"body": [
+					"redstone.getInput(${1:side})$0"
+				],
+				"description": "(side:number)\n:number\n():table\nReturns current incoming (non-bundled) redstone values. getInput(side) returns the redstone level from the specified side. getInput() returns a table of redstone levels from all sides.\nNote that the table returned is zero based. That is because the keys of the table are the ordinal values of the sides, and sides.bottom is 0.\nNote also that the side is relative to the computer's orientation, i.e. sides.south is in front of the computer, not south in the world. Likewise, sides.left is to the left of the computer, so when you look at the computer's front, it'll be to your right.\nIf you use mods such as RedLogic the input may exceed the vanilla values of [0, 15]."
+			},
+	
+			"redstone.getOutput()": {
+				"scope": "lua",
+				"prefix": "redstone.getOutput()",
+				"body": [
+					"redstone.getOutput(${1:side})$0"
+				],
+				"description": "(side:number)\n:number\n():table\nGets the currently set output on the specified side, or the set value of all sides if called with no arguments"
+			},
+	
+			"redstone.setOutput()": {
+				"scope": "lua",
+				"prefix": "redstone.setOutput()",
+				"body": [
+					"redstone.setOutput(${1:side})$0"
+				],
+				"description": "(side:number, value:number):number\n(values:table):table\nSets the strength of the redstone signal to emit. Returns the old value. This can be an arbitrarily large number for mods that support this. The first variant of this method takes a side and the redstone strength to apply to just that side. setOutput(values) allows you to set the redstone strength of all sides (or a subset of sides) in a single call."
+			},
+	
+			"redstone.getBundledInput()": {
+				"scope": "lua",
+				"prefix": "redstone.getBundledInput()",
+				"body": [
+					"redstone.getBundledInput(${1:side}, ${2:color})$0"
+				],
+				"description": "(side:number, color:number)\n:number\n(side:number):table\n():table\nLike getInput, but for bundled input, reading the value for the channel with the specified API/Colors.As of OC 1.3: only available on a tier two redstone card.\n(side, color) returns the strength of the incoming redstone value on the specified side on the specified color channel.\n(side) returns a table (Map[Int, Int] structure) of redstone values on the specified side in a bundled pack, indexed by color.\n() returns all redstone values, of all sides and all colors. It is a Map[Int, Map[Int, Int]] structure. The top level keys are in [0, 5] range, values of sides."
+			},
+	
+			"redstone.getBundledOutput()": {
+				"scope": "lua",
+				"prefix": "redstone.getBundledOutput()",
+				"body": [
+					"redstone.getBundledOutput(${1:side}, ${2:color})$0"
+				],
+				"description": "(side:number, color:number)\n:number\n(side:number):table\n():table\nLike getOutput, but for bundled output, getting the values previously set that the device is emitting.\nAs of OC 1.3: only available on a tier two redstone card."
+			},
+	
+			"redstone.setBundledOutput()": {
+				"scope": "lua",
+				"prefix": "redstone.setBundledOutput()",
+				"body": [
+					"redstone.setBundledOutput(${1:side}, ${2:color}, ${2:value})$0"
+				],
+				"description": "(side:number, color:number, value:number)\n:number\n(side:number, value:number)\n:number\n(value:number)\n:number\nLike setOutput, but for bundled output, setting the value for the channel with the specified API/Colors. Returns the previous values set. setBundledOutput(side, values) sets a pack of color-indexed redstone values, [0, 15]. colors.white is zero. The values table doesn't have to be contiguous, and values omitted are left unchanged. setBundledOutput(values) allows you to set redstone levels for any side and any color in a single api call. \nAs of OC 1.3: only available on a tier two redstone card."
+			},
+	
+			"redstone.getComparatorInput()": {
+				"scope": "lua",
+				"prefix": "redstone.getComparatorInput()",
+				"body": [
+					"redstone.getComparatorInput(${1:side})$0"
+				],
+				"description": "(side:number)\n:number\nGet the comparator input on the specified side."
+			},
+	
+			"redstone.getWirelessInput()": {
+				"scope": "lua",
+				"prefix": "redstone.getWirelessInput()",
+				"body": [
+					"redstone.getWirelessInput()"
+				],
+				"description": ":number\nGet the wireless redstone input.\nAdded in OC 1.3. Only available on tier two redstone cards."
+			},
+	
+			"redstone.getWirelessOutput()": {
+				"scope": "lua",
+				"prefix": "redstone.getWirelessOutput()",
+				"body": [
+					"redstone.getWirelessOutput()"
+				],
+				"description": ":boolean\nGet the wireless redstone output.\nAdded in OC 1.3. Only available on tier two redstone cards."
+			},
+	
+			"redstone.setWirelessOutput()": {
+				"scope": "lua",
+				"prefix": "redstone.setWirelessOutput()",
+				"body": [
+					"redstone.setWirelessOutput(${1|true,false|})$0"
+				],
+				"description": "(value:boolean)\n:boolean\nSet the wireless redstone output.\nadded in OC 1.3. Only available on tier two redstone cards."
+			},
+	
+			"redstone.getWirelessFrequency()": {
+				"scope": "lua",
+				"prefix": "redstone.getWirelessFrequency()",
+				"body": [
+					"redstone.getWirelessFrequency()"
+				],
+				"description": ":number\nGet the currently set wireless redstone frequency.\nAdded in OC 1.3. Only available on tier two redstone cards."
+			},
+	
+			"redstone.setWirelessFrequency()": {
+				"scope": "lua",
+				"prefix": "redstone.setWirelessFrequency()",
+				"body": [
+					"redstone.setWirelessFrequency(${1:frequency})$0"
+				],
+				"description": "(frequency:number)\n:number\nSet the wireless redstone frequency to use.\nAdded in OC 1.3. Only available on tier two redstone cards."
+			},
+	
+			"redstone.getWakeThreshold()": {
+				"scope": "lua",
+				"prefix": "redstone.getWakeThreshold()",
+				"body": [
+					"redstone.getWakeThreshold()"
+				],
+				"description": ":number\nGets the current wake-up threshold."
+			},
+	
+			"redstone.setWakeThreshold()": {
+				"scope": "lua",
+				"prefix": "redstone.setWakeThreshold()",
+				"body": [
+					"redstone.setWakeThreshold()"
+				],
+				"description": "(threshold:number)\n:number\nSets the wake-up threshold to the specified number."
+			},
+	
+	
+	
+		// TODO: robot
+		// FIXME: screen
+		// TODO: sign
+		// TODO: tank controller
+		// TODO: tractor beam
+		// TODO: transposer
+		// TODO: tunnel
+		// TODO: world sensor
+		// TODO: component access ------------------- https://ocdoc.cil.li/component:component_access
+		// TODO: signals----------------------------- https://ocdoc.cil.li/component:signals
+		
+	
+	
+		// Applied Energistics
+			"getCpus()": {
+				"scope": "lua",
+				"prefix": "getCpus()",
+				"body": [
+					"getCpus()"
+				],
+				"description": ":table\nGet a list of tables representing the available CPUs in the network."
+			},
+	
+			"getCraftables()": {
+				"scope": "lua",
+				"prefix": "getCraftables()",
+				"body": [
+					"getCraftables(${1:filter})$0"
+				],
+				"description": "([filter:table])\n:table\nGet a list of known item recipes. These can be used to issue crafting requests."
+			},
+	
+			"getItemsInNetwork()": {
+				"scope": "lua",
+				"prefix": "getItemsInNetwork()",
+				"body": [
+					"getItemsInNetwork(${1:filter})$0"
+				],
+				"description": "([filter:table]\n:table\nGet a list of the stored items in the network."
+			},
+	
+			"store()": {
+				"scope": "lua",
+				"prefix": "store()",
+				"body": [
+					"store(${1:info})$0"
+				],
+				"description": "([filter:table,][dbAddress:string,][startSlot:number,][count:number])\n:bool\nStore items in the network matching the specified filter in the database with the specified address."
+			},
+	
+			"getFluidsInNetwork()": {
+				"scope": "lua",
+				"prefix": "getFluidsInNetwork()",
+				"body": [
+					"getFluidsInNetwork()"
+				],
+				"description": ":table\n Get a list of the stored fluids in the network."
+			},
+	
+			"getAvgPowerInjection()": {
+				"scope": "lua",
+				"prefix": "getAvgPowerInjection()",
+				"body": [
+					"getAvgPowerInjection()"
+				],
+				"description": ":number\nGet the average power injection into the network."
+			},
+	
+			"getAvgPowerUsage()": {
+				"scope": "lua",
+				"prefix": "getAvgPowerUsage()",
+				"body": [
+					"getAvgPowerUsage()"
+				],
+				"description": ":number\nGet the average power usage of the network."
+			},
+	
+			"getIdlePowerUsage()": {
+				"scope": "lua",
+				"prefix": "getIdlePowerUsage()",
+				"body": [
+					"getIdlePowerUsage()"
+				],
+				"description": ":number\nGet the idle power usage of the network."
+			},
+	
+			"getMaxStoredPower()": {
+				"scope": "lua",
+				"prefix": "getMaxStoredPower()",
+				"body": [
+					"getMaxStoredPower()"
+				],
+				"description": ":number\nGet the maximum stored power in the network."
+			},
+	
+			"getStoredPower()": {
+				"scope": "lua",
+				"prefix": "getStoredPower()",
+				"body": [
+					"getStoredPower()"
+				],
+				"description": ":number\nGet the stored power in the network."
+			},
+			//ME Controller me_controller
+			"getEnergyStored()": {
+				"scope": "lua",
+				"prefix": "getEnergyStored()",
+				"body": [
+					"getEnergyStored()"
+				],
+				"description": ":number\nReturns the amount of stored energy on the connected side."
+			},
+	
+			"getMaxEnergyStored()": {
+				"scope": "lua",
+				"prefix": "getMaxEnergyStored()",
+				"body": [
+					"getMaxEnergyStored()"
+				],
+				"description": ":number\nReturns the maximum amount of stored energy on the connected side."
+			},
+	
+			"canExtract()": {
+				"scope": "lua",
+				"prefix": "canExtract()",
+				"body": [
+					"canExtract()"
+				],
+				"description": ":number\n Returns whether this component can have energy extracted from the connected side."
+			},
+	
+			"canReceive()": {
+				"scope": "lua",
+				"prefix": "canReceive()",
+				"body": [
+					"canReceive()"
+				],
+				"description": ":number\n Returns whether this component can receive energy on the connected side."
+			},
+			//Craftable - userdata objects returned from any ae2 network component getCraftables
+			"getItemStack()": {
+				"scope": "lua",
+				"prefix": "getItemStack()",
+				"body": [
+					"getItemStack()"
+				],
+				"description": ":table\nReturns the item stack representation of the crafting result."
+			},
+	
+			"request()": {
+				"scope": "lua",
+				"prefix": "request()",
+				"body": [
+					"request()"
+				],
+				"description": "([amount:int[,prioritizePower:boolean[,cpuName:string]]])\n:userdata\nRequests the item to be crafted, returning an object that allows tracking the crafting status."
+			},
+			//CraftStatus - userdata objects returned from calling request on Craftable
+			"isCanceled()": {
+				"scope": "lua",
+				"prefix": "isCanceled()",
+				"body": [
+					"isCanceled()"
+				],
+				"description": ":Boolean\nGet whether the crafting request has been canceled."
+			},
+	
+			"isDone()": {
+				"scope": "lua",
+				"prefix": "isDone()",
+				"body": [
+					"isDone()"
+				],
+				"description": ":Boolean\nGet whether the crafting request is done."
+			},
+			//ME_Interface - The me_interface provides the Common Network API and the following
+			"getInterfaceConfiguration()": {
+				"scope": "lua",
+				"prefix": "getInterfaceConfiguration()",
+				"body": [
+					"getInterfaceConfiguration(${1:slot})$0"
+				],
+				"description": "([slot:number])\n:table\nGet the configuration of the interface."
+			},
+	
+			"setInterfaceConfiguration()": {
+				"scope": "lua",
+				"prefix": "setInterfaceConfiguration()",
+				"body": [
+					"setInterfaceConfiguration(${1:info})$0"
+				],
+				"description": "([slot:number][, database:address, entry:number[, size:number]])\n:boolean\nConfigure the interface."
+			},
+			//ME_ImportBus - The me_importbus provides the Common Network API and the following:
+			"getImportConfiguration()": {
+				"scope": "lua",
+				"prefix": "getImportConfiguration()",
+				"body": [
+					"getImportConfiguration(${1:side, slot})$0"
+				],
+				"description": "(side:number[, slot:number])\n:boolean\nGet the configuration of the import bus pointing in the specified direction."
+			},
+	
+			"setImportConfiguration()": {
+				"scope": "lua",
+				"prefix": "setImportConfiguration()",
+				"body": [
+					"setImportConfiguration(${1:info})$0"
+				],
+				"description": "(side:number[, slot:number][, database:address, entry:number])\n:boolean\nConfigure the import bus pointing in the specified direction to import item stacks matching the specified descriptor."
+			},
+			//ME_ExportBus - The me_exportbus provides the Common Network API and the following:
+			"getExportConfiguration()": {
+				"scope": "lua",
+				"prefix": "getExportConfiguration()",
+				"body": [
+					"getExportConfiguration(${1:side,slot})$0"
+				],
+				"description": "(side:number, [ slot:number])\n:boolean\nGet the configuration of the export bus pointing in the specified direction."
+			},
+	
+			"setExportConfiguration()": {
+				"scope": "lua",
+				"prefix": "setExportConfiguration()",
+				"body": [
+					"setExportConfiguration(${1:info})$0"
+				],
+				"description": "(side:number[, slot:number][, database:address, entry:number)\n:boolean\nConfigure the export bus pointing in the specified direction to export item stacks matching the specified descriptor."
+			},
+	
+			"exportIntoSlot()": {
+				"scope": "lua",
+				"prefix": "exportIntoSlot()",
+				"body": [
+					"exportIntoSlot(${1:side,slot})$0"
+				],
+				"description": "(side:number, slot:number)\n:boolean\nMake the export bus facing the specified direction perform a single export operation into the specified slot."
+			}
+	
+	
+	}
