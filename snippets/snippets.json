@@ -1107,7 +1107,141 @@
 				],
 				"description": "This is the same as calling robot.turnRight twice."
 			},
-		// TODO: robot tanks
+
+			"robot.tankCount()": {
+				"scope": "lua",
+				"prefix": "robot.tankCount()",
+				"body": [
+					"robot.tankCount()"
+				],
+				"description": ":number\nThe number of tanks installed in the robot."
+			},
+
+			"robot.selectTank()": {
+				"scope": "lua",
+				"prefix": "robot.selectTank()",
+				"body": [
+					"robot.selectTank(${1:tank}$0)"
+				],
+				"description": "(tank:number)\nSelect the specified tank. This determines which tank most operations operate on."
+			},
+
+			"robot.tankLevel()": {
+				"scope": "lua",
+				"prefix": "robot.tankLevel()",
+				"body": [
+					"robot.tankLevel(${1:[tank[]})"
+				],
+				"description": "([tank:number])\n:number\nThe the current fluid level in the specified tank, or, if none is specified, the selected tank."
+			},
+
+			"robot.tankSpace()": {
+				"scope": "lua",
+				"prefix": "robot.tankSpace()",
+				"body": [
+					"robot.tankSpace(${1:[tank[]})"
+				],
+				"description": "([tank:number])\n:number\nThe the remaining fluid capacity in the specified tank, or, if none is specified, the selected tank."
+			},
+
+			"robot.compareFluidTo()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluidTo()",
+				"body": [
+					"robot.compareFluidTo(${1:tank})"
+				],
+				"description": "(tank:number)\n:boolean\nTests whether the fluid in the selected tank is the same as in the specified tank."
+			},
+
+			"robot.transferFluidTo()": {
+				"scope": "lua",
+				"prefix": "robot.transferFluidTo()",
+				"body": [
+					"robot.transferFluidTo(${1:tank})"
+				],
+				"description": "(tank:number[,count:number])\n:boolean\nTransfers the specified amount of fluid from the selected tank into the specified tank. If no volume is specified, tries to transfer 1000 mB."
+			},
+			
+			"robot.compareFluid()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluid()",
+				"body": [
+					"robot.compareFluid()"
+				],
+				"description": ":boolean\nTests whether the fluid in the selected tank is the same as in the world or the tank in front of the robot."
+			},
+			
+			"robot.compareFluidUp()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluidUp()",
+				"body": [
+					"robot.compareFluidUp()"
+				],
+				"description": ":boolean\nLike compareFluid, but operates on the block above the robot."
+			},
+			
+			"robot.compareFluidDown()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluidDown()",
+				"body": [
+					"robot.compareFluidDown()"
+				],
+				"description": ":boolean\nLike compareFluid, but operates on the block below the robot."
+			},
+			
+			"robot.drain()": {
+				"scope": "lua",
+				"prefix": "robot.drain()",
+				"body": [
+					"robot.drain(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nExtracts the specified amount of fluid from the world or the tank in front of the robot. When no amount is specified, will try to drain 1000 mB. When the drained fluid is in the world and it cannot be fully stored in the selected tank, the operation fails, i.e. no fluid is lost."
+			},
+			
+			"robot.drainUp()": {
+				"scope": "lua",
+				"prefix": "robot.drainUp()",
+				"body": [
+					"robot.drainUp(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike drain, but operates on the block above the robot."
+			},
+			
+			"robot.drainDown()": {
+				"scope": "lua",
+				"prefix": "robot.drainDown()",
+				"body": [
+					"robot.drainDown(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike drain, but operates on the block below the robot."
+			},
+			
+			"robot.fill()": {
+				"scope": "lua",
+				"prefix": "robot.fill()",
+				"body": [
+					"robot.fill(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nInjects the specified amount of fluid from the selected tank into the the world or the tank in front of the robot. When no amount is specified, will try to eject 1000 mB. When there is not enough fluid to fill a block, or the target tank does not have enough room, the operation fails, i.e. no fluid is lost."
+			},
+			
+			"robot.fillUp()": {
+				"scope": "lua",
+				"prefix": "robot.fillUp()",
+				"body": [
+					"robot.fillUp(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike fill, but operates on the block above the robot."
+			},
+
+			"robot.fillDown()": {
+				"scope": "lua",
+				"prefix": "robot.fillDown()",
+				"body": [
+					"robot.fillDown(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike fill, but operates on the block below the robot."
+			},
 		// FIXME: screen
 		// TODO: sign
 		// TODO: tank controller
