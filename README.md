@@ -32,6 +32,9 @@ This is a collection of snippets that makes it possible to easily write  OpenCom
 
 ## Release Notes
 
+### 0.3.1 2020-10-21
+I haven't been playing Minecraft for a while and will no longer be maintaining this. If you wish to continue this please let me know. :)
+
 ### 0.3.0
 
 Initial release of OpenComputerSnippets
