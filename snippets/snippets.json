@@ -782,10 +782,466 @@
 				],
 				"description": "(threshold:number)\n:number\nSets the wake-up threshold to the specified number."
 			},
+
+			// robot
+			"robot.name()": {
+				"scope": "lua",
+				"prefix": "robot.name()",
+				"body": [
+					"robot.name()"
+				],
+				"description": ":string\nThe name of a Robot is set initially during it's creation and cannot be changed programmatically. However you can change it using an anvil if you want."
+			},
+
+			"robot.detect()": {
+				"scope": "lua",
+				"prefix": "robot.detect()",
+				"body": [
+					"robot.detect()"
+				],
+				"description": ":boolean, string\nDetects what is directly in front of the robot and returns if the robot could move through it as well as a generic description."
+			},
+	
+			"robot.detectUp()": {
+				"scope": "lua",
+				"prefix": "robot.detectUp()",
+				"body": [
+					"robot.detectUp()"
+				],
+				"description": ":boolean, string\nAs robot.detect() except that it scans the block directly above the robot."
+			},
 	
 	
-	
-		// TODO: robot
+			"robot.detectDown()": {
+				"scope": "lua",
+				"prefix": "robot.detectDown()",
+				"body": [
+					"robot.detectDown()"
+				],
+				"description": ":boolean, string\nAs robot.detect() except that it scans the block directly below the robot."
+			},
+			
+			"robot.select()": {
+				"scope": "lua",
+				"prefix": "robot.select()",
+				"body": [
+					"robot.select(${1:slot})$0"
+				],
+				"description": "(slot:number)\n:number\nSelects the given inventory slot (if specified) and returns the current inventory slot."
+			},
+
+			"robot.inventorySize()": {
+				"scope": "lua",
+				"prefix": "robot.inventorySize()",
+				"body": [
+					"robot.inventorySize()"
+				],
+				"description": ":number\nReturns the amount of select-able internal robot inventory slots. To get the number of inventory upgrade use: x = robot.inventorySize() / 16."
+			},
+			"robot.count()": {
+				"scope": "lua",
+				"prefix": "robot.count()",
+				"body": [
+					"robot.count(${1:slot})$0"
+				],
+				"description": "(slot:number)\n:number\n Returns the amount of items currently in the specified or selected slot."
+			},
+
+			"robot.space()": {
+				"scope": "lua",
+				"prefix": "robot.space()",
+				"body": [
+					"robot.space(${1:slot})$0"
+				],
+				"description": "(slot:number)\n:number\nReturns the amount of items that can still be added to the specified slot until it is filled up."
+			},
+			
+			"robot.transferTo()": {
+				"scope": "lua",
+				"prefix": "robot.transferTo()",
+				"body": [
+					"robot.transferTo(${1:[slot[]})$0"
+				],
+				"description": "(slot:number[,count number])\n:boolean\nMoves all or up to count items from the currently selected slot to the specified slot.\nReturns true if exchanging the content between those slots was successful, false otherwise."
+			},
+
+			"robot.compareTo()": {
+				"scope": "lua",
+				"prefix": "robot.compareTo()",
+				"body": [
+					"robot.compareTo(${1:slot})$0"
+				],
+				"description": "(slot:number)\n:boolean\nCompares the item of the currently selected slot to the item of the slot specified and returns whether they are equal or not."
+			},
+
+			"robot.compare()": {
+				"scope": "lua",
+				"prefix": "robot.compare()",
+				"body": [
+					"robot.compare()"
+				],
+				"description": ":boolean\nCompares the block in front of the robot with the item in the currently selected slot and returns whether they are the same or not."
+			},
+
+			"robot.compareUp()": {
+				"scope": "lua",
+				"prefix": "robot.compareUp()",
+				"body": [
+					"robot.compareUp(${1:slot})$0"
+				],
+				"description": ":boolean\nAs robot.compare just for the block directly above the robot"
+			},
+
+			"robot.compareDown()": {
+				"scope": "lua",
+				"prefix": "robot.compareDown()",
+				"body": [
+					"robot.compareDown(${1:slot})$0"
+				],
+				"description": ":boolean\nAs robot.compare just for the block directly below the robot"
+			},
+
+			"robot.drop()": {
+				"scope": "lua",
+				"prefix": "robot.drop()",
+				"body": [
+					"robot.drop(${1:count})$0"
+				],
+				"description": "(count:number)\n:boolean\nTries to drop items from the currently selected inventory slot in front of the robot.\nReturns true if at least one item was dropped, false otherwise."
+			},
+
+			"robot.dropUp()": {
+				"scope": "lua",
+				"prefix": "robot.dropUp()",
+				"body": [
+					"robot.dropUp(${1:count}$0)"
+				],
+				"description": "(count:number)\n:boolean\nAs robot.drop just for the block directly above the robot."
+			},
+
+			"robot.dropDown()": {
+				"scope": "lua",
+				"prefix": "robot.dropDown()",
+				"body": [
+					"robot.dropDown(${1:count}$0)"
+				],
+				"description": "(count:number)\n:boolean\nAs robot.drop just for the block directly below the robot."
+			},
+
+			"robot.suck()": {
+				"scope": "lua",
+				"prefix": "robot.suck()",
+				"body": [
+					"robot.suck(${1:count}$0)"
+				],
+				"description": "(count:number)\n:boolean\nTries to pick up items from directly in front of the robot and puts it into the selected slot or (if occupied) first possible slot.\nReturns true if at least one item was picked up, false otherwise."
+			},
+
+			"robot.suckUp()": {
+				"scope": "lua",
+				"prefix": "robot.suckUp()",
+				"body": [
+					"robot.suckUp(${1:count}$0)"
+				],
+				"description": "(count:number)\n:boolean\nAs robot.suck just for the block directly above the robot."
+			},
+
+			"robot.suckDown()": {
+				"scope": "lua",
+				"prefix": "robot.suckDown()",
+				"body": [
+					"robot.suckDown(${1:count}$0)"
+				],
+				"description": "(count:number)\n:boolean\nAs robot.suck just for the block directly below the robot."
+			},
+
+			"robot.place()": {
+				"scope": "lua",
+				"prefix": "robot.place()",
+				"body": [
+					"robot.place(${1:[side[]}$0)"
+				],
+				"description": "([side:number[,sneaky boolean]])\n:boolean[,string]\nTries to place the block in the currently selected inventory slot in front of the robot.\nReturns: true if an item could be placed, false otherwise. If placement failed, the secondary return parameter will describe why the placement failed."
+			},
+
+			"robot.placeUp()": {
+				"scope": "lua",
+				"prefix": "robot.placeUp()",
+				"body": [
+					"robot.placeUp(${1:[side[]}$0)"
+				],
+				"description": "([side:number[,sneaky boolean]])\n:boolean[,string]\nAs robot.place except that the robot tries to place the item into space directly above it."
+			},
+
+			"robot.placeDown()": {
+				"scope": "lua",
+				"prefix": "robot.placeDown()",
+				"body": [
+					"robot.placeDown(${1:[side[]}$0)"
+				],
+				"description": "([side:number[,sneaky boolean]])\n:boolean[,string]\nAs robot.place except that the robot tries to place the item into space directly below it."
+			},
+
+			"robot.durability()": {
+				"scope": "lua",
+				"prefix": "robot.durability()",
+				"body": [
+					"robot.durability()"
+				],
+				"description": ":number, number, number or nil, string\nReturns the durability of the item currently in the tool slot, followed by its current durability, followed by its maximum durability."
+			},
+
+			"robot.swing()": {
+				"scope": "lua",
+				"prefix": "robot.swing()",
+				"body": [
+					"robot.swing(${1:[side[]})"
+				],
+				"description": "([side:number[sneaky boolean]])\n:boolean[,string]\nMakes the robot use the item currently in the tool slot against the block or space immediately in front of the robot in the same way as if a player would make a left-click.\nReturns: true if the robot could interact with the block or entity in front of it, false otherwise. If successful the secondary parameter describes what the robot interacted with and will be one of 'entity', 'block' or 'fire'."
+			},
+
+			"robot.swingUp()": {
+				"scope": "lua",
+				"prefix": "robot.swingUp()",
+				"body": [
+					"robot.swingUp(${1:[side[]})"
+				],
+				"description": "([side:number[sneaky boolean]])\n:boolean[,string]\nAs robot.swing except that the block or entity directly above the robot will be the target."
+			},
+
+			"robot.swingDown()": {
+				"scope": "lua",
+				"prefix": "robot.swingDown()",
+				"body": [
+					"robot.swingDown(${1:[side[]})"
+				],
+				"description": "([side:number[sneaky boolean]])\n:boolean[,string]\nAs robot.swing except that the block or entity directly below the robot will be the target."
+			},
+
+			"robot.use()": {
+				"scope": "lua",
+				"prefix": "robot.use()",
+				"body": [
+					"robot.use(${1:[side[]})"
+				],
+				"description": "([side:number[sneaky boolean[duration number]]])\n:boolean[,string]\nAttempts to use the item currently equipped in the tool slot in the same way as if the player would make a right-click.\nReturns: true if the robot could interact with the block or entity in front of it, false otherwise. If successful the secondary parameter describes what the robot interacted with and will be one of 'blockactivated', 'itemplaced', 'iteminteracted' or 'itemused'."
+			},
+
+			"robot.useUp()": {
+				"scope": "lua",
+				"prefix": "robot.useUp()",
+				"body": [
+					"robot.useUp(${1:[side[]})"
+				],
+				"description": "([side:number[sneaky boolean[duration number]]])\n:boolean[,string]\nAs robot.use except that the item is used aiming at the area above the robot."
+			},
+
+			"robot.useDown()": {
+				"scope": "lua",
+				"prefix": "robot.useDown()",
+				"body": [
+					"robot.useDown(${1:[side[]})"
+				],
+				"description": "([side:number[sneaky boolean[duration number]]])\n:boolean[,string]\nAs robot.use except that the item is used aiming at the area below the robot."
+			},
+
+			"robot.forward()": {
+				"scope": "lua",
+				"prefix": "robot.forward()",
+				"body": [
+					"robot.forward()"
+				],
+				"description": ":boolean[,string]\nTries to move the robot forward.\nReturns: true if the robot successfully moved, nil otherwise."
+			},
+
+			"robot.back()": {
+				"scope": "lua",
+				"prefix": "robot.back()",
+				"body": [
+					"robot.back()"
+				],
+				"description": ":boolean[,string]\nAs robot.forward except that the robot tries to move backward"
+			},
+
+			"robot.up()": {
+				"scope": "lua",
+				"prefix": "robot.up()",
+				"body": [
+					"robot.up()"
+				],
+				"description": ":boolean[,string]\nAs robot.forward except that the robot tries to move upwards"
+			},
+
+			"robot.down()": {
+				"scope": "lua",
+				"prefix": "robot.down()",
+				"body": [
+					"robot.down()"
+				],
+				"description": ":boolean[,string]\nAs robot.forward except that the robot tries to move downwards"
+			},
+
+			"robot.turnLeft()": {
+				"scope": "lua",
+				"prefix": "robot.turnLeft()",
+				"body": [
+					"robot.turnLeft()"
+				],
+				"description": "Turns the robot 90° to the left."
+			},
+
+			"robot.turnRight()": {
+				"scope": "lua",
+				"prefix": "robot.turnRight()",
+				"body": [
+					"robot.turnRight()"
+				],
+				"description": "As robot.turnLeft except that the robot turns 90° to the right."
+			},
+
+			"robot.turnAround()": {
+				"scope": "lua",
+				"prefix": "robot.turnAround()",
+				"body": [
+					"robot.turnAround()"
+				],
+				"description": "This is the same as calling robot.turnRight twice."
+			},
+
+			"robot.tankCount()": {
+				"scope": "lua",
+				"prefix": "robot.tankCount()",
+				"body": [
+					"robot.tankCount()"
+				],
+				"description": ":number\nThe number of tanks installed in the robot."
+			},
+
+			"robot.selectTank()": {
+				"scope": "lua",
+				"prefix": "robot.selectTank()",
+				"body": [
+					"robot.selectTank(${1:tank}$0)"
+				],
+				"description": "(tank:number)\nSelect the specified tank. This determines which tank most operations operate on."
+			},
+
+			"robot.tankLevel()": {
+				"scope": "lua",
+				"prefix": "robot.tankLevel()",
+				"body": [
+					"robot.tankLevel(${1:[tank[]})"
+				],
+				"description": "([tank:number])\n:number\nThe the current fluid level in the specified tank, or, if none is specified, the selected tank."
+			},
+
+			"robot.tankSpace()": {
+				"scope": "lua",
+				"prefix": "robot.tankSpace()",
+				"body": [
+					"robot.tankSpace(${1:[tank[]})"
+				],
+				"description": "([tank:number])\n:number\nThe the remaining fluid capacity in the specified tank, or, if none is specified, the selected tank."
+			},
+
+			"robot.compareFluidTo()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluidTo()",
+				"body": [
+					"robot.compareFluidTo(${1:tank})"
+				],
+				"description": "(tank:number)\n:boolean\nTests whether the fluid in the selected tank is the same as in the specified tank."
+			},
+
+			"robot.transferFluidTo()": {
+				"scope": "lua",
+				"prefix": "robot.transferFluidTo()",
+				"body": [
+					"robot.transferFluidTo(${1:tank})"
+				],
+				"description": "(tank:number[,count:number])\n:boolean\nTransfers the specified amount of fluid from the selected tank into the specified tank. If no volume is specified, tries to transfer 1000 mB."
+			},
+			
+			"robot.compareFluid()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluid()",
+				"body": [
+					"robot.compareFluid()"
+				],
+				"description": ":boolean\nTests whether the fluid in the selected tank is the same as in the world or the tank in front of the robot."
+			},
+			
+			"robot.compareFluidUp()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluidUp()",
+				"body": [
+					"robot.compareFluidUp()"
+				],
+				"description": ":boolean\nLike compareFluid, but operates on the block above the robot."
+			},
+			
+			"robot.compareFluidDown()": {
+				"scope": "lua",
+				"prefix": "robot.compareFluidDown()",
+				"body": [
+					"robot.compareFluidDown()"
+				],
+				"description": ":boolean\nLike compareFluid, but operates on the block below the robot."
+			},
+			
+			"robot.drain()": {
+				"scope": "lua",
+				"prefix": "robot.drain()",
+				"body": [
+					"robot.drain(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nExtracts the specified amount of fluid from the world or the tank in front of the robot. When no amount is specified, will try to drain 1000 mB. When the drained fluid is in the world and it cannot be fully stored in the selected tank, the operation fails, i.e. no fluid is lost."
+			},
+			
+			"robot.drainUp()": {
+				"scope": "lua",
+				"prefix": "robot.drainUp()",
+				"body": [
+					"robot.drainUp(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike drain, but operates on the block above the robot."
+			},
+			
+			"robot.drainDown()": {
+				"scope": "lua",
+				"prefix": "robot.drainDown()",
+				"body": [
+					"robot.drainDown(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike drain, but operates on the block below the robot."
+			},
+			
+			"robot.fill()": {
+				"scope": "lua",
+				"prefix": "robot.fill()",
+				"body": [
+					"robot.fill(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nInjects the specified amount of fluid from the selected tank into the the world or the tank in front of the robot. When no amount is specified, will try to eject 1000 mB. When there is not enough fluid to fill a block, or the target tank does not have enough room, the operation fails, i.e. no fluid is lost."
+			},
+			
+			"robot.fillUp()": {
+				"scope": "lua",
+				"prefix": "robot.fillUp()",
+				"body": [
+					"robot.fillUp(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike fill, but operates on the block above the robot."
+			},
+
+			"robot.fillDown()": {
+				"scope": "lua",
+				"prefix": "robot.fillDown()",
+				"body": [
+					"robot.fillDown(${1:[count[]}$0)"
+				],
+				"description": "([count:number])\n:boolean\nLike fill, but operates on the block below the robot."
+			},
 		// FIXME: screen
 		// TODO: sign
 		// TODO: tank controller
